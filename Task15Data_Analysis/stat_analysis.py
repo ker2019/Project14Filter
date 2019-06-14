@@ -8,7 +8,7 @@ PROMPT = "You can:\n[0] Exit\n[1] Load a new data\n[2] Unload a data\n[3] Build 
 
 Data = {}
 
-def loadData(filename: 'String', name: 'String'):
+def loadData(filename: 'String', name=filename):
 	data = pd.read_csv(filename)
 	Data[name] = data
 
@@ -47,7 +47,10 @@ if __name__=='__main__':
 		elif ch == '1':
 			filename = input("Write name of file contains data:")
 			name = input("Write name you would use to call data:")
-			loadData(filename, name)
+			if name == "":
+				loadData(filename)
+			else:
+				loadData(filename, name)
 		elif ch == '2':
 			name = input("Write name of data:")
 			unloadData(name)
