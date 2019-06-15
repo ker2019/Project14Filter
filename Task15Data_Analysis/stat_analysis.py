@@ -8,7 +8,9 @@ PROMPT = "You can:\n[0] Exit\n[1] Load a new data\n[2] Unload a data\n[3] Build 
 
 Data = {}
 
-def loadData(filename: 'String', name=filename):
+def loadData(filename: 'String', name=None):
+	if name == None:
+		name = filename
 	data = pd.read_csv(filename)
 	Data[name] = data
 
@@ -17,14 +19,14 @@ def unloadData(name: 'String'):
 		del Data[name]
 	except:
 		print("Error: nonexistent")
-		
+
 def buildGraphic(name: 'String'):
 	try:
 		Data[name].plot.kde()
 		plt.show()
 	except:
 		print("Error: nonexistent")
-		
+
 def ksTest(name: 'String', seriename: 'String'):
 	try:
 		serie = Data[name][seriename]
@@ -33,7 +35,7 @@ def ksTest(name: 'String', seriename: 'String'):
 		print("Error: nonexistent")
 
 def showData(name: 'String'):
-	try:L
+	try:
 		print(Data[name])
 	except:
 		print("Error: nonexistent")
