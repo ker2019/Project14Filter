@@ -1,5 +1,3 @@
-#!/usr/local/bin/python3.6
-
 class SerieDomainError(Exception):
 	pass
 
